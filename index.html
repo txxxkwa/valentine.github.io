@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+:root{
+  --back: #fee2e9;
+  --light-pink: #f8ad9d;
+  --pink: #f4978e;
+  --dark-pink: #f08080;
+  --valentines-card: #eae2b7;
+  --heart: #f40b4a;
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: Solitreo;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: var(--back);
+  font-family: "Pangolin", cursive;
+  font-size: 1vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  margin-top: 15vmin;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.envelope {
+  position: relative;
+  background: var(--dark-pink);
+  height: 55vmin;
+  width: 77vmin;
+  animation: up 3s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.valentines-card {
+  position: absolute;
+  background: var(--valentines-card);
+  height: 51vmin;
+  width: 70vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -2px -2px 20px rgba(0,0,0,0.4); 
+  animation: slide-rev .3s ease-in-out;
+}
+.valentines-card:before{
+  content:"";
+  display: flex;
+  place-items: center;
+  position: absolute;
+  border: 2px solid #003049;
+  border-style: line;
+  width: 68vmin;
+  height: 49vmin;
+}
+
+.card-text {
+  position: absolute;
+  top: 7vmin;
+  font-size: 4.2vmin;
+}
+ 
+.valentines-card p{
+  font-weight: 400;
+  margin-top: -5vmin;
+  text-align: center;
+  letter-spacing: 0.6px;
+  font-size: 2.5vmin;
+}
+
+.puso img{
+  height: 500px;
+  margin-left: 3vmin;
+  margin-top: -35px;
+  animation: shape .3s ease-in-out;
+} 
+
+.cover {
+  position: absolute;
+  height: 0;
+  width: 0;
+
+  border-bottom: 55.1vmin solid var(--light-pink);
+  border-right: 77vmin solid transparent;
+  top: -0.1vmin;
+  left: -0.1px;
+  z-index: 4;
+}
+
+
+.cover::before {
+  position: absolute;
+  content: "";
+  border-right: 38.8vmin solid var(--pink);
+  border-bottom: 27.7vmin solid transparent;
+  border-top: 27.3vmin solid transparent;
+  top: 0.1vmin;
+  left: 38.2vmin;
+}  
+
+.lid {
+  position: absolute;
+  height: 0;
+  width: 0;
+
+  border-top: 27.6vmin solid var(--dark-pink);
+  border-left: 38.6vmin solid transparent;
+  border-right: 38.6vmin solid transparent;
+
+  top: 1px;
+  transform-origin: top;
+  animation: open-rev 2s;
+}  
+
+.container:hover .lid {
+  animation: open 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.container:hover .valentines-card {
+  animation: slide 0.2s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+} 
+
+.container:hover .puso {
+  animation: shape 0.2s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+} 
+
+.shadow {
+  position: relative;
+  top: 3vmin;
+  border-radius: 50%;
+  opacity: 0.7;
+  height: 3vmin;
+  width: 65vmin;
+  background-color: rgba(0,0,0,0.5);
+  animation: scale 3s linear infinite;
+}
+@keyframes up {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
+  }
+  @keyframes scale {
+    0%, 100% {
+      transform: scaleX(1);
+    }
+    50% {
+      transform: scaleX(0.85);
+    }
+  }
+.heart {
+  position: relative;
+  width: 5vmin;
+  height: 4vmin;
+  top: 10vmin;
+}
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 2.5vmin;
+  width: 2.5vmin;
+  height: 4vmin;
+  background: var(--heart);
+  border-radius: 2.5vmin 2.5vmin 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+@keyframes open {
+  100% {
+    transform: rotatex(180deg);
+  }
+}
+
+@keyframes shape {
+  100% {
+    transform: translatey(-19vmin);
+    z-index: 4;
+  }
+}
+
+@keyframes slide {
+  100% {
+    transform: translatey(-16vmin);
+    z-index: 1;
+  }
+}
+
+@keyframes open-rev {
+  from {
+    transform: rotatex(-180deg);
+  }
+}
+
+@keyframes slide-rev {
+  from {
+    transform: translatey(-15vmin);
+  }
+}
+@media (max-width: 720px) {
+    html{
+      margin-top: -10vmin;
+    }
+    .puso img{
+      height: 250px;
+    }
+    .valentines-card p{
+      font-size: 10px;
+    }
+}
+</style>
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Solitreo' rel='stylesheet'>
+
+    <div class="container">
+      <div class="envelope">
+        <div class="valentines-card">
+          <h1 class="card-text">Happy Valentine's Day Ciara!</h1>
+          <p>Keep slayin' beh, ganda mo palagi!</p>
+          <div class="heart"></div>
+        </div>
+        <div class="puso">
+          <img src="flower.png" alt=""> 
+        </div>
+        <div class="cover"> </div>
+        <div class="lid"> </div>
+      </div>
+      <div class="shadow"> </div>
+    </div>
+    
+</body>
+</html>
